@@ -5,13 +5,9 @@ import Box from "./components/Box";
 export default function Home() {
   return (
     <>
-      <Box
-        borderColor='black'
-        backgroundColor='white'
-        color='purple'
-      >
+      <Box bordercolor="red" backgroundcolor="white" color="purple">
         hello world
       </Box>
     </>
-  )
+  );
 }

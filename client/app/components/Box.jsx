@@ -1,29 +1,32 @@
-import styled from 'styled-components';
+"use strict";
+import styled from "styled-components";
 
 const Root = styled.div`
-    margin: 8px 6px;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid ${({ borderColor }) => (borderColor ? borderColor : "black")};
-    background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : "black")};
-    color: ${({ color }) => (color ? color : "black")};
+  margin: 8px 6px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid
+    ${({ bordercolor }) => (bordercolor ? bordercolor : "black")};
+  background-color: ${({ backgroundcolor }) =>
+    backgroundcolor ? backgroundcolor : "black"};
+  color: ${({ color }) => (color ? color : "black")};
 `;
 
 export default function Box({
-    children, 
-    className,
-    borderColor,
-    backgroundColor,
-    color,
+  children,
+  className,
+  bordercolor,
+  backgroundcolor,
+  color,
 }) {
   return (
-    <Root 
-        className={className}
-        borderColor={borderColor}
-        backgroundColor={backgroundColor}
-        color={color}
+    <Root
+      className={className}
+      bordercolor={bordercolor}
+      backgroundcolor={backgroundcolor}
+      color={color}
     >
-        {children}
+      {children}
     </Root>
-  )
+  );
 }
