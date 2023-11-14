@@ -1,24 +1,7 @@
-import connectDB from "@/app/lib/mongodb";
-import Activity from "@/app/models/activity";
+import connectDB from "../../lib/mongodb";
+import Activity from "../../models/activity";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
-
-// export async function GET(req, res) {
-
-//     try {
-//         await connectDB();
-//         const data = await Activity.find({});
-//         if (!data) {
-//             return res.status(400).json({ success: false })
-//         } else {
-//             res.status(200).json({ success: true, data })
-//             console.log(data)
-//         }
-//     } catch (error) {
-//         res.status(400).json({ success: false })
-//     }
-   
-// }
 
 export async function GET() {  
     try {

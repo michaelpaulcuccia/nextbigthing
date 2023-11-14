@@ -1,5 +1,5 @@
-import connectDB from "@/app/lib/mongodb";
-import Activity from "@/app/models/activity";
+import connectDB from "../../lib/mongodb";
+import Activity from "../../models/activity";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
