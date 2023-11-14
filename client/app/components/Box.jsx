@@ -7,10 +7,10 @@ const Root = styled.div`
   width: 20rem;
   height: 12rem;
   border-radius: 12rem 12rem 0 0;
-  color: ${(props) => props.color || "black"};
+  color: white;
   background: ${(props) => props.background || "black"};
-  border: ${(props) => props.border || "black"};
   position: relative;
+  margin: 8px;
 
   //DESKTOP
   @media (min-width: ${breakpoints.MOBILE}) {
@@ -70,9 +70,7 @@ const Overlay = styled.div`
 
 export default function Box({
   className,
-  border,
   background,
-  color,
   activityType,
   image,
   date,
@@ -87,9 +85,7 @@ export default function Box({
   return (
     <Root
       className={className}
-      border={border}
       background={background}
-      color={color}
     >
       <Overlay>
           <Image src={image} width={25} height={25} alt=""/>
