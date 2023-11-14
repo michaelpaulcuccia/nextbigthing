@@ -5,6 +5,7 @@ import * as Colors from "./constants/colors";
 import runner from './assets/icons/runner.svg';
 import breathwork from './assets/icons/breathwork.svg';
 import hiking from './assets/icons/hiking.svg';
+import ActivityForm from "./components/ActivityForm";
 
 
 export default function Home() {
@@ -49,6 +50,8 @@ export default function Home() {
         statData2="time"
         statData3="speed"
       />
+
+      <ActivityForm />
     </>
   );
 }
