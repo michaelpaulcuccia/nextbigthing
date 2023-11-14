@@ -4,33 +4,46 @@ import Image from "next/image";
 import * as breakpoints from '../constants/breakpoints';
 
 const Root = styled.div`
-  width: 30rem;
-  height: 15rem;
-  border-radius: 15rem 15rem 0 0;
+  width: 20rem;
+  height: 12rem;
+  border-radius: 12rem 12rem 0 0;
   color: ${(props) => props.color || "black"};
   background: ${(props) => props.background || "black"};
   border: ${(props) => props.border || "black"};
   position: relative;
+
+  //DESKTOP
+  @media (min-width: ${breakpoints.MOBILE}) {
+    width: 30rem;
+    height: 15rem;
+    border-radius: 15rem 15rem 0 0;
+  }
 `;
 
 const Overlay = styled.div`
   position: absolute;
-  top: 25%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, 0);
   display: flex;
   flex-direction: column;
   justify-content: center;
 
+  //DESKTOP
+  @media (min-width: ${breakpoints.MOBILE}) {
+    top: 22%;
+  }
+
   * {
     margin: 0 auto;
   }
 
   h2, p {
-    letter-spacing: 1.5px;
+    letter-spacing: .75px;
 
+    //DESKTOP
     @media (min-width: ${breakpoints.MOBILE}) {
-      letter-spacing: 0;
+      letter-spacing: 1.5;
     }
   }
 
@@ -39,9 +52,17 @@ const Overlay = styled.div`
   }
 
   table {
-    padding-top: 28px;
-    width: 24rem;
+    padding-top: 16px;
+    width: 19rem;
     text-align: center;
+    font-size: 12px;
+
+    //DESKTOP
+      @media (min-width: ${breakpoints.MOBILE}) {
+      padding-top: 28px;
+      width: 24rem;
+      font-size: 16px;
+    }
   }
 
 `;
@@ -75,15 +96,17 @@ export default function Box({
           <h2>{activityType}</h2>
           <p>{date}, {time}</p>
           <table>
-            <tr>
-              <th>{statData1}</th>
-              <th>{statData2}</th>
-              <th>{statData3}</th>
-            </tr>
             <tbody>
-              <td>{stat1}</td>
-              <td>{stat2}</td>
-              <td>{stat3}</td>
+              <tr>
+                <th>{statData1}</th>
+                <th>{statData2}</th>
+                <th>{statData3}</th>
+              </tr>
+              <tr>
+                <td>{stat1}</td>
+                <td>{stat2}</td>
+                <td>{stat3}</td>
+              </tr>
             </tbody>
           </table>
       </Overlay>
