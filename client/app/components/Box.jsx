@@ -1,29 +1,40 @@
 "use strict";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const myAnim = keyframes`
+  0% {
+		  opacity: 0;
+		  transform: translateX(250px);
+	  }
+
+	  100% {
+		  opacity: 1;
+		  transform: translateX(0);
+	}
+`;
 
 const Root = styled.div`
   margin: 8px 6px;
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid
-    ${({ bordercolor }) => (bordercolor ? bordercolor : "black")};
-  background: ${({ backgroundcolor }) =>
-    backgroundcolor ? backgroundcolor : "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);"};
-  color: ${({ color }) => (color ? color : "black")};
+  color: ${(props) => props.color || "black"};
+  background: ${(props) => props.background || "black"};
+  border: ${(props) => props.border || "black"};
+  animation: ${myAnim} 1s ease-in-out 0s 1 normal forwards;
 `;
 
 export default function Box({
   children,
   className,
-  bordercolor,
-  backgroundcolor,
+  border,
+  background,
   color,
 }) {
   return (
     <Root
       className={className}
-      bordercolor={bordercolor}
-      backgroundcolor={backgroundcolor}
+      border={border}
+      background={background}
       color={color}
     >
       {children}
