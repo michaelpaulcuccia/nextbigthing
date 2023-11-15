@@ -1,52 +1,58 @@
 "use client";
-
-import runner from './assets/icons/runner.svg';
+import { useEffect, useState } from "react";
+import walking from './assets/icons/walking.svg';
 import breathwork from './assets/icons/breathwork.svg';
 import hiking from './assets/icons/hiking.svg';
 import ActivityForm from "./components/ActivityForm";
 import Box from "./components/Box";
 
-
 export default function Home() {
+
+const [theData, setTheData] = useState();
+
+const getData = async () => {
+  try {
+    const response = await fetch('/api/getdata');
+    const res = await response.json();
+    const resData = res.data;
+    setTheData(resData)
+  } catch (err) {
+    console.error(err.message);
+  }
+}
+
+  useEffect(() => {
+    getData();
+  }, [])
+
+  
   return (
     <>
       <ActivityForm />
-      <Box 
-        activityType="Walking"
-        image={runner}
-        date='11/14/23'
-        time='0600'
-        stat1="0.46 mi"
-        stat2="11'54.3"
-        stat3='2.3 mph'
-        stat1Title="distance"
-        stat2Title="time"
-        stat3Title="speed"
-      />
-      <Box 
-        activityType="Breathwork"
-        image={breathwork}
-        date='11/14/23'
-        time='1100'
-        stat1="3"
-        stat2="1:30"
-        stat3='1:50'
-        stat1Title="rounds"
-        stat2Title="avg retention"
-        stat3Title="max retention"
-      />
-      <Box 
-        activityType="Hiking"
-        image={hiking}
-        date='11/14/23'
-        time='1300'
-        stat1="2.01 mi"
-        stat2="40'32.5"
-        stat3='2.8 mph'
-        stat1Title="distance"
-        stat2Title="time"
-        stat3Title="speed"
-      />
+      {
+        theData &&
+        theData.map((item, i) => (
+          <Box 
+            key={i}
+            activityType={item.activityType}
+            image={
+              item.activityType === 'Walking' ? walking :
+              item.activityType === 'Hiking' ? hiking :
+              item.activityType === 'Breathwork' ? breathwork :
+              null
+            }
+            date={item.date}
+            time={item.time}
+            stat1Title={item.stat1Title}
+            stat1={item.stat1}
+            stat2Title={item.stat2Title}
+            stat2={item.stat2}
+            stat3Title={item.stat3Title}
+            stat3={item.stat3}
+        />
+        ))
+      
+      }
     </>
   );
 }

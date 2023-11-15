@@ -7,6 +7,22 @@ const Root = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
+
+  label {
+    margin-right: 8px;
+  }
+
+  textarea {
+    border: 2px solid #79797F;
+    border-radius: 4px;
+    resize: none;
+    width: 355px;
+    height: 24px;
+    padding: 3px 6px;
+    overflow: auto;
+    font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
 `;
 
 export default function ActivityForm() {
@@ -20,9 +36,9 @@ export default function ActivityForm() {
   const [stat3Title, setStat3Title] = useState("");
   const [stat3, setStat3Data] = useState("");
  
-
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,6 +102,7 @@ export default function ActivityForm() {
         <div>
           <label htmlFor="date">Date</label>
           <textarea
+            maxlength="40"
             onChange={(e) => setDate(e.target.value)}
             value={date}
             id="date"
@@ -105,13 +122,15 @@ export default function ActivityForm() {
 
         <div>
           <label htmlFor="stat1Title">Stat 1 Title</label>
-          <p>distance, rounds</p>
-          <textarea
-            onChange={(e) => setStat1Title(e.target.value)}
-            value={stat1Title}
+          <select 
+            name="stat1Title" 
             id="stat1Title"
-            placeholder="Type the Stat 1 Title here."
-          ></textarea>
+            onChange={(e) => setStat1Title(e.target.value)}
+          >
+            <option value="">--Please choose an option--</option>
+            <option value="distance">distance</option>
+            <option value="rounds">rounds</option>
+          </select>
         </div>
 
         <div>
@@ -126,13 +145,15 @@ export default function ActivityForm() {
 
         <div>
           <label htmlFor="stat2Title">Stat 2 Title</label>
-          <p>time, avg retention</p>
-          <textarea
-            onChange={(e) => setStat2Title(e.target.value)}
-            value={stat2Title}
+          <select 
+            name="stat2Title" 
             id="stat2Title"
-            placeholder="Type the Stat 2 Title here."
-          ></textarea>
+            onChange={(e) => setStat2Title(e.target.value)}
+          >
+            <option value="">--Please choose an option--</option>
+            <option value="time">time</option>
+            <option value="average retention">average retention</option>
+          </select>
         </div>
 
         <div>
@@ -147,13 +168,15 @@ export default function ActivityForm() {
 
         <div>
           <label htmlFor="stat3Title">Stat 3 Title</label>
-          <p>speed, max retention</p>
-          <textarea
-            onChange={(e) => setStat3Title(e.target.value)}
-            value={stat3Title}
+          <select 
+            name="stat3Title" 
             id="stat3Title"
-            placeholder="Type the Stat 3 Title here."
-          ></textarea>
+            onChange={(e) => setStat3Title(e.target.value)}
+          >
+            <option value="">--Please choose an option--</option>
+            <option value="speed">speed</option>
+            <option value="max retention">max retention</option>
+          </select>
         </div>
 
         <div>

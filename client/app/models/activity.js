@@ -22,6 +22,7 @@ const activitySchema = new Schema({
   stat1Title: {
     type: String,
     required: [true, "stat1Title is required."],
+    enum: ["distance", "rounds"],
   },
   stat1: {
     type: String,
@@ -30,6 +31,7 @@ const activitySchema = new Schema({
   stat2Title: {
     type: String,
     required: [true, " stat2Title is required."],
+    enum: ["time", "average retention"],
   },
   stat2: {
     type: String,
@@ -38,6 +40,7 @@ const activitySchema = new Schema({
   stat3Title: {
     type: String,
     required: [true, " stat3Title is required."],
+    enum: ["speed", "max retention"],
   },
   stat3: {
     type: String,
