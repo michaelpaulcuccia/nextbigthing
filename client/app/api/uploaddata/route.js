@@ -33,7 +33,7 @@ export async function POST(req) {
        });
   
       return NextResponse.json({
-        msg: ["Message sent successfully"],
+        msg: ["Activity successfully added"],
         success: true,
       });
     } catch (error) {

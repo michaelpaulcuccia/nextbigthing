@@ -26,12 +26,16 @@ export default function ActivityForm() {
     });
 
     const { msg, success } = await res.json();
+
     setError(msg);
     setSuccess(success);
 
     if (success) {
       setActivityType("");
+      setDate("");
+      setTime("");
     }
+    
   };
 
   return (

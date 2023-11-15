@@ -1,17 +1,18 @@
 "use client";
 
-import Box from "./components/Box";
-import * as Colors from "./constants/colors";
-import runner from './assets/icons/runner.svg';
-import breathwork from './assets/icons/breathwork.svg';
-import hiking from './assets/icons/hiking.svg';
-import ActivityForm from "./components/ActivityForm";
+// import Box from "./components/Box";
+// import * as Colors from "./constants/colors";
+// import runner from './assets/icons/runner.svg';
+// import breathwork from './assets/icons/breathwork.svg';
+// import hiking from './assets/icons/hiking.svg';
+// import ActivityForm from "./components/ActivityForm";
+import NewBox from "./components/NewBox";
 
 
 export default function Home() {
   return (
     <>
-      <Box  
+      {/* <Box  
         background={Colors.BLEND_TWO} 
         activityType="Walking"
         image={runner}
@@ -49,9 +50,10 @@ export default function Home() {
         statData1="distance"
         statData2="time"
         statData3="speed"
-      />
+      /> */}
 
-      <ActivityForm />
+      {/* <ActivityForm /> */}
+      <NewBox />
     </>
   );
 }
