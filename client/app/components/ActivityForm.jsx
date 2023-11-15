@@ -26,6 +26,8 @@ const Root = styled.div`
 `;
 
 export default function ActivityForm() {
+
+  //DATA
   const [activityType, setActivityType] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -36,9 +38,12 @@ export default function ActivityForm() {
   const [stat3Title, setStat3Title] = useState("");
   const [stat3, setStat3Data] = useState("");
  
+  //ERRORS and SUCCESS
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
 
+  //FORM STATE
+  const [formState, setFormState] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,23 +87,31 @@ export default function ActivityForm() {
 
   return (
     <Root>
-      <form
-        onSubmit={handleSubmit}
-      >
-        <div>
-          <label htmlFor="activityType">Activity Name</label>
-          <select 
-            name="activityType" 
-            id="activityType"
-            onChange={(e) => setActivityType(e.target.value)}
-          >
+      {
+        formState === "" ? 
+
+          <div>
+            <label htmlFor="activityType">Activity Name</label>
+            <select 
+              name="activityType" 
+              id="activityType"
+              onChange={(e) => [
+                setActivityType(e.target.value), 
+                setFormState(e.target.value)
+              ]}
+            >
             <option value="">--Please choose an option--</option>
             <option value="Hiking">Hiking</option>
             <option value="Walking">Walking</option>
             <option value="Breathwork">Breathwork</option>
           </select>
-        </div>
+      </div>
+        
+        : 
 
+        <form
+          onSubmit={handleSubmit}
+        >
         <div>
           <label htmlFor="date">Date</label>
           <textarea
@@ -120,79 +133,152 @@ export default function ActivityForm() {
           ></textarea>
         </div>
 
-        <div>
-          <label htmlFor="stat1Title">Stat 1 Title</label>
-          <select 
-            name="stat1Title" 
-            id="stat1Title"
-            onChange={(e) => setStat1Title(e.target.value)}
-          >
-            <option value="">--Please choose an option--</option>
-            <option value="distance">distance</option>
-            <option value="rounds">rounds</option>
-          </select>
-        </div>
+        {
+          formState === 'Walking' ?
+          <>
+            <div>
+              <label htmlFor="stat1Title">Distance</label>
+              <textarea
+                onChange={(e) => [
+                  setStat1Data(e.target.value + ' mi'),
+                  setStat1Title('distance')
+                ]}
+                value={stat1}
+              id="stat1"
+              placeholder="Add distance in miles."
+            ></textarea>
+            </div>
 
-        <div>
-          <label htmlFor="stat1Title">Stat 1 Data</label>
-          <textarea
-            onChange={(e) => setStat1Data(e.target.value)}
-            value={stat1}
-            id="stat1"
-            placeholder="Type the Stat 1 Data here."
-          ></textarea>
-        </div>
+            <div>
+              <label htmlFor="stat2Title">Time</label>
+              <textarea
+                onChange={(e) => [
+                  setStat2Data(e.target.value + ' min'),
+                  setStat2Title('time')
+                ]}
+                value={stat2}
+              id="stat2"
+              placeholder="Add time in minutes"
+            ></textarea>
+            </div>
 
-        <div>
-          <label htmlFor="stat2Title">Stat 2 Title</label>
-          <select 
-            name="stat2Title" 
-            id="stat2Title"
-            onChange={(e) => setStat2Title(e.target.value)}
-          >
-            <option value="">--Please choose an option--</option>
-            <option value="time">time</option>
-            <option value="average retention">average retention</option>
-          </select>
-        </div>
+            <div>
+              <label htmlFor="stat3Title">Speed</label>
+              <textarea
+                onChange={(e) => [
+                  setStat3Data(e.target.value + ' mph'),
+                  setStat3Title('speed')
+                ]}
+                value={stat3}
+              id="stat3"
+              placeholder="Add speed in mph"
+            ></textarea>
+            </div>
+          </>
 
-        <div>
-          <label htmlFor="stat1Title">Stat 2 Data</label>
-          <textarea
-            onChange={(e) => setStat2Data(e.target.value)}
-            value={stat2}
-            id="stat2"
-            placeholder="Type the Stat 2 Data here."
-          ></textarea>
-        </div>
+          :
 
-        <div>
-          <label htmlFor="stat3Title">Stat 3 Title</label>
-          <select 
-            name="stat3Title" 
-            id="stat3Title"
-            onChange={(e) => setStat3Title(e.target.value)}
-          >
-            <option value="">--Please choose an option--</option>
-            <option value="speed">speed</option>
-            <option value="max retention">max retention</option>
-          </select>
-        </div>
+          formState === 'Hiking' ?
 
-        <div>
-          <label htmlFor="stat3Title">Stat 3 Data</label>
-          <textarea
-            onChange={(e) => setStat3Data(e.target.value)}
-            value={stat3}
-            id="stat3"
-            placeholder="Type the Stat 3 Data here."
-          ></textarea>
-        </div>
+          <>
+            <div>
+              <label htmlFor="stat1Title">Distance</label>
+              <textarea
+                onChange={(e) => [
+                  setStat1Data(e.target.value + ' mi'),
+                  setStat1Title('distance')
+                ]}
+                value={stat1}
+              id="stat1"
+              placeholder="Add distance in miles."
+            ></textarea>
+            </div>
+
+            <div>
+              <label htmlFor="stat2Title">Time</label>
+              <textarea
+                onChange={(e) => [
+                  setStat2Data(e.target.value + ' min'),
+                  setStat2Title('time')
+                ]}
+                value={stat2}
+              id="stat2"
+              placeholder="Add time in minutes"
+            ></textarea>
+            </div>
+
+            <div>
+              <label htmlFor="stat3Title">Speed</label>
+              <textarea
+                onChange={(e) => [
+                  setStat3Data(e.target.value + ' mph'),
+                  setStat3Title('speed')
+                ]}
+                value={stat3}
+              id="stat3"
+              placeholder="Add speed in mph"
+            ></textarea>
+            </div>
+
+          </>
+
+          :
+
+          formState === 'Breathwork' ?
+
+          <>
+            <div>
+              <label htmlFor="stat1Title">Rounds</label>
+              <textarea
+                onChange={(e) => [
+                  setStat1Data(e.target.value + ' rounds'),
+                  setStat1Title('rounds')
+                ]}
+                value={stat1}
+              id="stat1"
+              placeholder="Add number of ounds."
+            ></textarea>
+            </div>
+
+            <div>
+              <label htmlFor="stat2Title">Avg Retention</label>
+              <textarea
+                onChange={(e) => [
+                  setStat2Data(e.target.value + ' min'),
+                  setStat2Title('time')
+                ]}
+                value={stat2}
+              id="stat2"
+              placeholder="Add time in minutes"
+            ></textarea>
+            </div>
+
+            <div>
+              <label htmlFor="stat3Title">Max Retention</label>
+              <textarea
+                onChange={(e) => [
+                  setStat3Data(e.target.value + ' min'),
+                  setStat3Title('max retention')
+                ]}
+                value={stat3}
+              id="stat3"
+              placeholder="Add max rentention time in min"
+            ></textarea>
+            </div>
+          </>
+
+          :
+
+          <></>
+
+        }
 
         <button type="submit">
           Submit
         </button>
       </form>
+      }
+     
 
       <div>
         {error &&
