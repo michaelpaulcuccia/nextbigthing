@@ -6,13 +6,7 @@ const activitySchema = new Schema({
     required: [true, "Activity is required."],
     enum: ["Hiking", "Walking", "Breathwork"],
   },
-
-//   email: {
-//     type: String,
-//     required: [true, "Email is required."],
-//     match: [/^[\w.%+-]+@[\w.-]+\.[A-Za-z]{2,}$/i, "Invalid email address"],
-//   },
-
+  //this item will automatically populate without user input.
   dateAuto: {
     type: Date,
     default: Date.now,
@@ -25,31 +19,30 @@ const activitySchema = new Schema({
     type: String,
     required: [true, "time is required."],
   },
-  // stat1: {
-  //   type: String,
-  //   required: [true, "stat1 is required."],
-  // },
-  // stat2: {
-  //   type: String,
-  //   required: [true, "stat2 is required."],
-  // },
-  // stat3: {
-  //   type: String,
-  //   required: [true, "stat3 is required."],
-  // },
-  // statData1: {
-  //   type: String,
-  //   required: [true, "statData1 is required."],
-  // },
-  //  statData2: {
-  //   type: String,
-  //   required: [true, " statData2 is required."],
-  // },
-  //  statData3: {
-  //   type: String,
-  //   required: [true, " statData3 is required."],
-  // }
-
+  stat1Title: {
+    type: String,
+    required: [true, "stat1Title is required."],
+  },
+  stat1: {
+    type: String,
+    required: [true, "stat1 is required."],
+  },
+  stat2Title: {
+    type: String,
+    required: [true, " stat2Title is required."],
+  },
+  stat2: {
+    type: String,
+    required: [true, "stat2 is required."],
+  },
+  stat3Title: {
+    type: String,
+    required: [true, " stat3Title is required."],
+  },
+  stat3: {
+    type: String,
+    required: [true, "stat3 is required."],
+  },
 });
 
 const Activity =

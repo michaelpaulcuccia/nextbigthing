@@ -81,9 +81,9 @@ export default function Box({
     stat1,
     stat2,
     stat3,
-    statData1,
-    statData2,
-    statData3
+    stat1Title,
+    stat2Title,
+    stat3Title
 }) {
   return (
     <Root>
@@ -93,9 +93,9 @@ export default function Box({
             <DateTimeContainer>{date}, {time}</DateTimeContainer>
         </ActivityContainer>
         <DataContainer>
-                <div>{statData1} : {stat1}</div>
-                <div>{statData2} : {stat2}</div>
-                <div>{statData3}: {stat3}</div>
+                <div>{stat1Title} : {stat1}</div>
+                <div>{stat2Title} : {stat2}</div>
+                <div>{stat3Title}: {stat3}</div>
         </DataContainer>
     </Root>
   )

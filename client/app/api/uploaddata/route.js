@@ -9,12 +9,12 @@ export async function POST(req) {
     dateAuto,
     date,
     time,
-    // stat1,
-    // stat2,
-    // stat3,
-    // statData1,
-    // statData2,
-    // statData3
+    stat1,
+    stat2,
+    stat3,
+    stat1Title,
+    stat2Title,
+    stat3Title
      } = await req.json();
   
     try {
@@ -24,12 +24,12 @@ export async function POST(req) {
         dateAuto,
         date,
         time,
-        // stat1,
-        // stat2,
-        // stat3,
-        // statData1,
-        // statData2,
-        // statData3
+        stat1,
+        stat2,
+        stat3,
+        stat1Title,
+        stat2Title,
+        stat3Title
        });
   
       return NextResponse.json({
