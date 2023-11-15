@@ -41,13 +41,16 @@ export default function ActivityForm() {
       >
         <div>
           <label htmlFor="activityType">Activity Name</label>
-          <input
-            onChange={(e) => setActivityType(e.target.value)}
-            value={activityType}
-            type="text"
+          <select 
+            name="activityType" 
             id="activityType"
-            placeholder="Activity Name"
-          />
+            onChange={(e) => setActivityType(e.target.value)}
+          >
+            <option value="">--Please choose an option--</option>
+            <option value="Hiking">Hiking</option>
+            <option value="Walking">Walking</option>
+            <option value="Breathwork">Breathwork</option>
+          </select>
         </div>
 
         <div>

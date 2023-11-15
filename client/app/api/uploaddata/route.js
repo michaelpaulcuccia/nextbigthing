@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 export async function POST(req) {
     const { 
     activityType,
+    dateAuto,
     date,
     time,
     // stat1,
@@ -20,6 +21,7 @@ export async function POST(req) {
       await connectDB();
       await Activity.create({ 
         activityType,
+        dateAuto,
         date,
         time,
         // stat1,

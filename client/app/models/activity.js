@@ -4,8 +4,7 @@ const activitySchema = new Schema({
   activityType: {
     type: String,
     required: [true, "Activity is required."],
-    minLength: [2, "Name must be larger than 2 characters"],
-    maxLength: [50, "Name must be lesser than 50 characters"],
+    enum: ["Hiking", "Walking", "Breathwork"],
   },
 
 //   email: {
@@ -14,10 +13,10 @@ const activitySchema = new Schema({
 //     match: [/^[\w.%+-]+@[\w.-]+\.[A-Za-z]{2,}$/i, "Invalid email address"],
 //   },
 
-  // date: {
-  //   type: Date,
-  //   default: Date.now,
-  // },
+  dateAuto: {
+    type: Date,
+    default: Date.now,
+  },
   date: {
     type: String,
     required: [true, "date is required."],
