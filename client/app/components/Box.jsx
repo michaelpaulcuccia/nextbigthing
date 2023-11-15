@@ -1,111 +1,102 @@
-"use client";
-import styled from "styled-components";
+import React from 'react';
 import Image from "next/image";
-import * as breakpoints from '../constants/breakpoints';
+import styled from 'styled-components';
+import * as breakpoint from '../constants/breakpoints';
 
 const Root = styled.div`
-  width: 20rem;
-  height: 12rem;
-  border-radius: 12rem 12rem 0 0;
-  color: white;
-  background: ${(props) => props.background || "black"};
-  position: relative;
-  margin: 8px;
+    background: #161626;
+    border-radius: 20px;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    
+    //DESKTOP
+    @media (min-width: ${breakpoint.MOBILE}) {
+        width: 475px;
+        padding: 24px 16px;
+    }
 
-  //DESKTOP
-  @media (min-width: ${breakpoints.MOBILE}) {
-    width: 30rem;
-    height: 15rem;
-    border-radius: 15rem 15rem 0 0;
-  }
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  //DESKTOP
-  @media (min-width: ${breakpoints.MOBILE}) {
-    top: 22%;
-  }
-
-  * {
-    margin: 0 auto;
-  }
-
-  h2, p {
-    letter-spacing: .75px;
+const ActivityContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #79797F;
 
     //DESKTOP
-    @media (min-width: ${breakpoints.MOBILE}) {
-      letter-spacing: 1.5;
+    @media (min-width: ${breakpoint.MOBILE}) {
+        flex-direction: row;
+        align-items: center;
     }
-  }
+`;
 
-  h2 {
-    padding-top: 3px;
-  }
 
-  table {
+const ActivityTitle = styled.p`
+    margin-left: 0;
+    font-size: 24px;
+
+    //DESKTOP
+    @media (min-width: ${breakpoint.MOBILE}) {
+        font-size: 42px;
+        font-weight: 300;
+        letter-spacing: 1.5px;
+        margin-left: 5px;
+    }
+`;
+
+const DateTimeContainer = styled.div`
+    margin-left: 0;
+    font-size: 14px;
+
+    //DESKTOP
+    @media (min-width: ${breakpoint.MOBILE}) {
+        margin-left: auto;
+        font-size: 18px;
+    }
+`;
+
+const DataContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #79797F;
     padding-top: 16px;
-    width: 19rem;
-    text-align: center;
-    font-size: 12px;
 
     //DESKTOP
-      @media (min-width: ${breakpoints.MOBILE}) {
-      padding-top: 28px;
-      width: 24rem;
-      font-size: 16px;
+    @media (min-width: ${breakpoint.MOBILE}) {
+        padding-top: 24px;
+        flex-direction: row;
+        justify-content: space-evenly;
     }
-  }
 
 `;
-
 
 export default function Box({
-  className,
-  background,
-  activityType,
-  image,
-  date,
-  time,
-  stat1,
-  stat2,
-  stat3,
-  statData1,
-  statData2,
-  statData3
+    activityType,
+    image,
+    date,
+    time,
+    stat1,
+    stat2,
+    stat3,
+    statData1,
+    statData2,
+    statData3
 }) {
   return (
-    <Root
-      className={className}
-      background={background}
-    >
-      <Overlay>
-          <Image src={image} width={25} height={25} alt=""/>
-          <h2>{activityType}</h2>
-          <p>{date}, {time}</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>{statData1}</th>
-                <th>{statData2}</th>
-                <th>{statData3}</th>
-              </tr>
-              <tr>
-                <td>{stat1}</td>
-                <td>{stat2}</td>
-                <td>{stat3}</td>
-              </tr>
-            </tbody>
-          </table>
-      </Overlay>
+    <Root>
+        <ActivityContainer>
+            <Image src={image} width={32} height={32} alt=""/>
+            <ActivityTitle>{activityType}</ActivityTitle>
+            <DateTimeContainer>{date}, {time}</DateTimeContainer>
+        </ActivityContainer>
+        <DataContainer>
+                <div>{statData1} : {stat1}</div>
+                <div>{statData2} : {stat2}</div>
+                <div>{statData3}: {stat3}</div>
+        </DataContainer>
     </Root>
-  );
+  )
 }
