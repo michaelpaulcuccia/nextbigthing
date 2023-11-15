@@ -2,28 +2,53 @@
 
 import { useState } from "react";
 import styled from "styled-components";
+import { useRouter } from 'next/navigation';
 
 const Root = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
+  padding: 24px;
+  width: 352px;
 
   label {
-    margin-right: 8px;
+    margin-right: 32px;
+    width: 50px;
   }
 
   textarea {
     border: 2px solid #79797F;
     border-radius: 4px;
     resize: none;
-    width: 355px;
+    width: 225px;
     height: 24px;
     padding: 3px 6px;
     overflow: auto;
     font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
+  h3 {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
 `;
+
+const FormItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 9px 0;
+`;
+
+const StyledButton = styled.button`
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-top: 10px;
+  &:hover {
+    background: #d5cbcb;
+  }
+`;
+
 
 export default function ActivityForm() {
 
@@ -44,6 +69,8 @@ export default function ActivityForm() {
 
   //FORM STATE
   const [formState, setFormState] = useState("");
+
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,6 +108,7 @@ export default function ActivityForm() {
       setStat2Data("");
       setStat3Title("");
       setStat3Data("");
+      router.push('/activities/')
     }
     
   };
@@ -105,40 +133,43 @@ export default function ActivityForm() {
             <option value="Walking">Walking</option>
             <option value="Breathwork">Breathwork</option>
           </select>
-      </div>
+        </div>
         
         : 
 
         <form
           onSubmit={handleSubmit}
         >
-        <div>
+        <h3>{formState}</h3>
+        <FormItem>
           <label htmlFor="date">Date</label>
           <textarea
-            maxlength="40"
+            maxlength="25"
             onChange={(e) => setDate(e.target.value)}
             value={date}
             id="date"
             placeholder="Type the date here."
           ></textarea>
-        </div>
+        </FormItem>
 
-        <div>
+        <FormItem>
           <label htmlFor="time">Time</label>
           <textarea
+            maxlength="25"
             onChange={(e) => setTime(e.target.value)}
             value={time}
             id="time"
             placeholder="Type the time here."
           ></textarea>
-        </div>
+        </FormItem>
 
         {
           formState === 'Walking' ?
           <>
-            <div>
+            <FormItem>
               <label htmlFor="stat1Title">Distance</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat1Data(e.target.value + ' mi'),
                   setStat1Title('distance')
@@ -147,11 +178,12 @@ export default function ActivityForm() {
               id="stat1"
               placeholder="Add distance in miles."
             ></textarea>
-            </div>
+            </FormItem>
 
-            <div>
+            <FormItem>
               <label htmlFor="stat2Title">Time</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat2Data(e.target.value + ' min'),
                   setStat2Title('time')
@@ -160,11 +192,12 @@ export default function ActivityForm() {
               id="stat2"
               placeholder="Add time in minutes"
             ></textarea>
-            </div>
+            </FormItem>
 
-            <div>
+            <FormItem>
               <label htmlFor="stat3Title">Speed</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat3Data(e.target.value + ' mph'),
                   setStat3Title('speed')
@@ -173,7 +206,7 @@ export default function ActivityForm() {
               id="stat3"
               placeholder="Add speed in mph"
             ></textarea>
-            </div>
+            </FormItem>
           </>
 
           :
@@ -181,9 +214,10 @@ export default function ActivityForm() {
           formState === 'Hiking' ?
 
           <>
-            <div>
+            <FormItem>
               <label htmlFor="stat1Title">Distance</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat1Data(e.target.value + ' mi'),
                   setStat1Title('distance')
@@ -192,11 +226,12 @@ export default function ActivityForm() {
               id="stat1"
               placeholder="Add distance in miles."
             ></textarea>
-            </div>
+            </FormItem>
 
-            <div>
+            <FormItem>
               <label htmlFor="stat2Title">Time</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat2Data(e.target.value + ' min'),
                   setStat2Title('time')
@@ -205,11 +240,12 @@ export default function ActivityForm() {
               id="stat2"
               placeholder="Add time in minutes"
             ></textarea>
-            </div>
+            </FormItem>
 
-            <div>
+            <FormItem>
               <label htmlFor="stat3Title">Speed</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat3Data(e.target.value + ' mph'),
                   setStat3Title('speed')
@@ -218,7 +254,7 @@ export default function ActivityForm() {
               id="stat3"
               placeholder="Add speed in mph"
             ></textarea>
-            </div>
+            </FormItem>
 
           </>
 
@@ -227,9 +263,10 @@ export default function ActivityForm() {
           formState === 'Breathwork' ?
 
           <>
-            <div>
+            <FormItem>
               <label htmlFor="stat1Title">Rounds</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat1Data(e.target.value + ' rounds'),
                   setStat1Title('rounds')
@@ -238,11 +275,12 @@ export default function ActivityForm() {
               id="stat1"
               placeholder="Add number of ounds."
             ></textarea>
-            </div>
+            </FormItem>
 
-            <div>
+            <FormItem>
               <label htmlFor="stat2Title">Avg Retention</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat2Data(e.target.value + ' min'),
                   setStat2Title('time')
@@ -251,11 +289,12 @@ export default function ActivityForm() {
               id="stat2"
               placeholder="Add time in minutes"
             ></textarea>
-            </div>
+            </FormItem>
 
-            <div>
+            <FormItem>
               <label htmlFor="stat3Title">Max Retention</label>
               <textarea
+                maxlength="25"
                 onChange={(e) => [
                   setStat3Data(e.target.value + ' min'),
                   setStat3Title('max retention')
@@ -264,7 +303,7 @@ export default function ActivityForm() {
               id="stat3"
               placeholder="Add max rentention time in min"
             ></textarea>
-            </div>
+            </FormItem>
           </>
 
           :
@@ -272,10 +311,9 @@ export default function ActivityForm() {
           <></>
 
         }
-
-        <button type="submit">
-          Submit
-        </button>
+          <StyledButton type="submit">
+            Submit
+          </StyledButton>
       </form>
       }
      
