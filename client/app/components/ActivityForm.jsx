@@ -108,7 +108,7 @@ export default function ActivityForm() {
       setStat2Data("");
       setStat3Title("");
       setStat3Data("");
-      router.push('/activities/')
+      router.push('/allactivities/')
     }
     
   };

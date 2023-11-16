@@ -1,35 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import ActivityContext from "../context/ActivitiesContext";
 import walking from '../assets/icons/walking.svg';
 import breathwork from '../assets/icons/breathwork.svg';
 import hiking from '../assets/icons/hiking.svg';
 import Box from "../components/Box";
 
 export default function page() {
+    
+    let activityData;
+    const { contextActivity } = useContext(ActivityContext);
+    activityData = contextActivity;
 
-    const [theData, setTheData] = useState();
-
-    const getData = async () => {
-        try {
-            const response = await fetch('/api/getdata');
-            const res = await response.json();
-            const resData = res.data;
-            setTheData(resData)
-        } catch (err) {
-            console.error(err.message);
-        }
-    }
-
-    useEffect(() => {
-        getData();
-    }, [])
+    //this page is not being refreshed on redirect
 
   return (
     <>
         {
-            theData &&
-            theData.map((item, i) => (
+            activityData.length &&
+            activityData.map((item, i) => (
             <Box 
                 key={i}
                 activityType={item.activityType}

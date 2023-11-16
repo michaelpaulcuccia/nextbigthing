@@ -1,6 +1,5 @@
 "use client";
 import React, { useContext } from 'react';
-//import ActivityForm from "./components/ActivityForm";
 import ActivityContext from "./context/ActivitiesContext";
 import Box from './components/Box';
 
@@ -22,7 +21,7 @@ export default function Home() {
     
     //put all times into an array
     arg.forEach((item) => {
-      let obj = {}
+      let obj = {};
       obj.dateAuto = item.dateAuto;
       unsortedDatesArr.push(obj);
     });
@@ -35,20 +34,15 @@ export default function Home() {
     //make item a string
     const lastestItem = latestItemArr.dateAuto;
 
-    //console.log(lastestItem)
-
     //filter activityData using time
     return arrWithLatestActivity = arg.filter((item) => item.dateAuto === lastestItem);
 
-  }
+  };
   
   if (activityData.length) {
     getLatestWorkout(activityData);
-  }
-
-
-  console.log(arrWithLatestActivity) 
-  
+  };
+ 
   return (
     <>
       <h2 style={{color: "white"}}>Your Latest Activity</h2>
