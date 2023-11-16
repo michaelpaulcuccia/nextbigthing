@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from './lib/registry';
 import './globals.css';
 import Container from './components/Container';
+import { ActivityContextProvider } from './context/ActivitiesContext';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,10 +16,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <StyledComponentsRegistry>
+          <ActivityContextProvider>
             <Container>
               {children}
             </Container>
-          </StyledComponentsRegistry>
+          </ActivityContextProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
