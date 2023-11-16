@@ -171,7 +171,7 @@ export default function ActivityForm() {
               <textarea
                 maxlength="25"
                 onChange={(e) => [
-                  setStat1Data(e.target.value + ' mi'),
+                  setStat1Data(e.target.value),
                   setStat1Title('distance')
                 ]}
                 value={stat1}
@@ -185,7 +185,7 @@ export default function ActivityForm() {
               <textarea
                 maxlength="25"
                 onChange={(e) => [
-                  setStat2Data(e.target.value + ' min'),
+                  setStat2Data(e.target.value),
                   setStat2Title('time')
                 ]}
                 value={stat2}
@@ -199,7 +199,7 @@ export default function ActivityForm() {
               <textarea
                 maxlength="25"
                 onChange={(e) => [
-                  setStat3Data(e.target.value + ' mph'),
+                  setStat3Data(e.target.value),
                   setStat3Title('speed')
                 ]}
                 value={stat3}
@@ -219,7 +219,7 @@ export default function ActivityForm() {
               <textarea
                 maxlength="25"
                 onChange={(e) => [
-                  setStat1Data(e.target.value + ' mi'),
+                  setStat1Data(e.target.value),
                   setStat1Title('distance')
                 ]}
                 value={stat1}
@@ -233,7 +233,7 @@ export default function ActivityForm() {
               <textarea
                 maxlength="25"
                 onChange={(e) => [
-                  setStat2Data(e.target.value + ' min'),
+                  setStat2Data(e.target.value),
                   setStat2Title('time')
                 ]}
                 value={stat2}
@@ -247,7 +247,7 @@ export default function ActivityForm() {
               <textarea
                 maxlength="25"
                 onChange={(e) => [
-                  setStat3Data(e.target.value + ' mph'),
+                  setStat3Data(e.target.value),
                   setStat3Title('speed')
                 ]}
                 value={stat3}
@@ -282,7 +282,7 @@ export default function ActivityForm() {
               <textarea
                 maxlength="25"
                 onChange={(e) => [
-                  setStat2Data(e.target.value + ' min'),
+                  setStat2Data(e.target.value),
                   setStat2Title('time')
                 ]}
                 value={stat2}
@@ -296,7 +296,7 @@ export default function ActivityForm() {
               <textarea
                 maxlength="25"
                 onChange={(e) => [
-                  setStat3Data(e.target.value + ' min'),
+                  setStat3Data(e.target.value),
                   setStat3Title('max retention')
                 ]}
                 value={stat3}

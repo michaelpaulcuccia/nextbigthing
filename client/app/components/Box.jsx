@@ -10,11 +10,13 @@ const Root = styled.div`
     display: flex;
     flex-direction: column;
     width: 320px;
+    margin: 16px 8px;    
     
     //DESKTOP
     @media (min-width: ${breakpoint.MOBILE}) {
         width: 475px;
         padding: 24px 16px;
+        margin: 24px 8px;
     }
 
 `;
