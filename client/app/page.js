@@ -47,31 +47,38 @@ export default function Home() {
 
   return (
     <>
-      <Dash>hello world</Dash>
-      {/* <h2 style={{color: "white"}}>Your Latest Activity</h2>
-      {
-        arrWithLatestActivity &&
-        arrWithLatestActivity.map((item, i) => (
-          <Box 
-            key={i}
-            activityType={item.activityType}
-            image={
-            item.activityType === 'Walking' ? walking :
-            item.activityType === 'Hiking' ? hiking :
-            item.activityType === 'Breathwork' ? breathwork :
-            null
-            }
-            date={item.date}
-            time={item.time}
-            stat1Title={item.stat1Title}
-            stat1={item.stat1}
-            stat2Title={item.stat2Title}
-            stat2={item.stat2}
-            stat3Title={item.stat3Title}
-            stat3={item.stat3}
-          />
-        ))
-      }  */}
+      <Dash
+        topOne="Bresaola biltong turkey brisket jerky pork chop. Pork chop tenderloin chicken pork loin sausage alcatra chuck flank."
+        topTwo={
+          arrWithLatestActivity &&
+          arrWithLatestActivity.map((item, i) => (
+            <Box
+              key={i}
+              activityType={item.activityType}
+              image={
+                item.activityType === "Walking"
+                  ? walking
+                  : item.activityType === "Hiking"
+                  ? hiking
+                  : item.activityType === "Breathwork"
+                  ? breathwork
+                  : null
+              }
+              date={item.date}
+              time={item.time}
+              stat1Title={item.stat1Title}
+              stat1={item.stat1}
+              stat2Title={item.stat2Title}
+              stat2={item.stat2}
+              stat3Title={item.stat3Title}
+              stat3={item.stat3}
+            />
+          ))
+        }
+        bottonOne="Sausage beef ribs short loin t-bone tongue leberkas, venison bacon meatball spare ribs chislic kevin shankle chicken shank. Pork loin cow bresaola picanha bacon, pork chop shoulder hamburger chicken short ribs."
+        bottomTwo="Boudin kevin chislic capicola, kielbasa flank meatloaf cow short loin corned beef jerky pig. Tenderloin pig corned beef ham strip steak t-bone meatloaf drumstick rump spare ribs. Andouille short ribs flank prosciutto frankfurter jowl meatloaf. Bresaola tenderloin prosciutto biltong ground round. Beef ribs kevin sausage pork swine fatback tri-tip frankfurter shankle t-bone drumstick."
+        bottomThree="Bacon ipsum dolor amet beef ribs landjaeger cupim jowl brisket andouille rump tongue picanha bacon. Pork fatback burgdoggen prosciutto pancetta flank. Frankfurter biltong fatback drumstick bresaola corned beef. Pastrami beef pork loin t-bone capicola jerky ground round kielbasa tail cow pork chop chuck porchetta ham. Strip steak pork chop pork beef, sirloin pork belly ham hock shoulder andouille tenderloin pork loin chicken pastrami flank jowl."
+      />
     </>
   );
 }
