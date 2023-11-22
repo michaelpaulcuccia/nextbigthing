@@ -1,24 +1,23 @@
 "use client";
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import ActivityContext from "./context/ActivitiesContext";
-import Box from './components/Box';
+import Box from "./components/Box";
+import Dash from "./components/Dash";
 
-import walking from './assets/icons/walking.svg';
-import breathwork from './assets/icons/breathwork.svg';
-import hiking from './assets/icons/hiking.svg';
+import walking from "./assets/icons/walking.svg";
+import breathwork from "./assets/icons/breathwork.svg";
+import hiking from "./assets/icons/hiking.svg";
 
 export default function Home() {
-
   let activityData;
   const { contextActivity } = useContext(ActivityContext);
   activityData = contextActivity;
 
   let arrWithLatestActivity;
-  function getLatestWorkout (arg) {
-
+  function getLatestWorkout(arg) {
     //create an empty array for unsorted time
     let unsortedDatesArr = [];
-    
+
     //put all times into an array
     arg.forEach((item) => {
       let obj = {};
@@ -27,7 +26,9 @@ export default function Home() {
     });
 
     //sort time array
-    const sortedDatesArr = unsortedDatesArr.sort((a, b) => new Date(b) - new Date(a));
+    const sortedDatesArr = unsortedDatesArr.sort(
+      (a, b) => new Date(b) - new Date(a)
+    );
 
     //get last item of sorted Array (most recent time)
     const latestItemArr = sortedDatesArr.pop();
@@ -35,17 +36,19 @@ export default function Home() {
     const lastestItem = latestItemArr.dateAuto;
 
     //filter activityData using time
-    return arrWithLatestActivity = arg.filter((item) => item.dateAuto === lastestItem);
+    return (arrWithLatestActivity = arg.filter(
+      (item) => item.dateAuto === lastestItem
+    ));
+  }
 
-  };
-  
   if (activityData.length) {
     getLatestWorkout(activityData);
-  };
- 
+  }
+
   return (
     <>
-      <h2 style={{color: "white"}}>Your Latest Activity</h2>
+      <Dash>hello world</Dash>
+      {/* <h2 style={{color: "white"}}>Your Latest Activity</h2>
       {
         arrWithLatestActivity &&
         arrWithLatestActivity.map((item, i) => (
@@ -68,7 +71,7 @@ export default function Home() {
             stat3={item.stat3}
           />
         ))
-      } 
+      }  */}
     </>
   );
 }
